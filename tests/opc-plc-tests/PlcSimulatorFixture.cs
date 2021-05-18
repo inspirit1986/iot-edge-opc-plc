@@ -133,7 +133,10 @@ namespace OpcPlc.Tests
             }
         }
 
-        private static bool CloseTo(double a, double b) => Math.Abs(a - b) <= Math.Abs(a * .00001);
+        private static bool CloseTo(double a, double b)
+        {
+            return Math.Abs(a - b) <= Math.Abs(a * .00001);
+        }
 
         private async Task<ApplicationConfiguration> GetConfigurationAsync()
         {
@@ -157,7 +160,7 @@ namespace OpcPlc.Tests
             }
 
             // Note for future OpcUa update: Utils is renamed X509Utils in later versions
-            config.ApplicationUri = Utils.GetApplicationUriFromCertificate(config.SecurityConfiguration.ApplicationCertificate.Certificate);
+            config.ApplicationUri = X509Utils.GetApplicationUriFromCertificate(config.SecurityConfiguration.ApplicationCertificate.Certificate);
 
             // Auto-accept server certificate
             config.CertificateValidator.CertificateValidation += CertificateValidator_AutoAccept;
