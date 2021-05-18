@@ -40,7 +40,7 @@ namespace OpcPlc.Tests
         [OneTimeTearDown]
         public void TearDown()
         {
-            Session.Close();
+            Session?.Close();
             Session = null;
         }
 
